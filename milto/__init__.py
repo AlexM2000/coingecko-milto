@@ -13,13 +13,12 @@ def run() -> None:
         type=str,
         required=True,
         help="""
-                Name of SQLite database to which load (for example 'coins.db'). 
-                Must be in the same folder as main.py.
-                If database doesn't exist, it will be created by pipeline.
-            """
+            Name of SQLite database to which load (for example 'coins.db').
+            If database doesn't exist, it will be created by pipeline in the same directory where command was executed.
+        """
     )
 
     args = parser.parse_args()
 
-    etl = CoinGeckoETL(db_name=args.db_name)
-    etl.execute()
+    coin_etl = CoinGeckoETL(db_name=args.db_name)
+    coin_etl.execute()
